@@ -365,7 +365,7 @@ const navSections = ["About", "Skills", "Work", "Journey", "Contact"];
 
 // Intersection Observer hook for scroll animations
 function useFadeIn() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -384,23 +384,18 @@ function useFadeIn() {
   return ref;
 }
 
-function FadeUp({ children, delay = 0, className = "" }) {
+function FadeUp({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   const ref = useFadeIn();
   return (
-    <div
-      ref={ref}
-      className={`fade-up ${delay ? `delay-${delay}` : ""} ${className}`}
-    >
+    <div ref={ref} className={`fade-up ${delay ? `delay-${delay}` : ""} ${className}`}>
       {children}
     </div>
   );
 }
 
 // ─── SAANJHA CASE STUDY ───
-function SaanjhaCaseStudy({ onBack }) {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+function SaanjhaCaseStudy({ onBack }: { onBack: () => void }) {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
     <div style={{ background: p.cream, minHeight: "100vh" }}>
       <div className="section" style={{ paddingTop: 120 }}>
@@ -418,17 +413,14 @@ function SaanjhaCaseStudy({ onBack }) {
             </div>
             <h1 className="cs-hero-title">Saanjha Social</h1>
             <p className="cs-hero-subtitle">
-              A community connection platform fighting social isolation in
-              Seattle by centering accessibility-first venue verification,
-              inclusion-informed matching, and a buddy system that creates
-              accountability without pressure.
+              A community connection platform fighting social isolation in Seattle by centering
+              accessibility-first venue verification, inclusion-informed matching, and a buddy
+              system that creates accountability without pressure.
             </p>
             <div className="cs-meta-row">
               <div className="cs-meta-item">
                 <div className="cs-meta-label">Role</div>
-                <div className="cs-meta-value">
-                  Lead Designer and Researcher
-                </div>
+                <div className="cs-meta-value">Lead Designer and Researcher</div>
               </div>
               <div className="cs-meta-item">
                 <div className="cs-meta-label">Timeline</div>
@@ -436,15 +428,11 @@ function SaanjhaCaseStudy({ onBack }) {
               </div>
               <div className="cs-meta-item">
                 <div className="cs-meta-label">Tools</div>
-                <div className="cs-meta-value">
-                  Figma, React/Vite, Java Swing
-                </div>
+                <div className="cs-meta-value">Figma, React/Vite, Java Swing</div>
               </div>
               <div className="cs-meta-item">
                 <div className="cs-meta-label">Presented</div>
-                <div className="cs-meta-value">
-                  COE MS Student Showcase, April 2026
-                </div>
+                <div className="cs-meta-value">COE MS Student Showcase, April 2026</div>
               </div>
             </div>
           </div>
@@ -455,22 +443,15 @@ function SaanjhaCaseStudy({ onBack }) {
           <div className="cs-stats-banner">
             <div className="cs-stat-card">
               <div className="cs-stat-num">1 in 5</div>
-              <div className="cs-stat-desc">
-                King County adults experience social isolation
-              </div>
+              <div className="cs-stat-desc">King County adults experience social isolation</div>
             </div>
             <div className="cs-stat-card">
               <div className="cs-stat-num">20.2%</div>
-              <div className="cs-stat-desc">
-                of King County adults live with a disability
-              </div>
+              <div className="cs-stat-desc">of King County adults live with a disability</div>
             </div>
             <div className="cs-stat-card">
               <div className="cs-stat-num">29%</div>
-              <div className="cs-stat-desc">
-                increased risk of premature death from social isolation
-                (Holt-Lunstad et al.)
-              </div>
+              <div className="cs-stat-desc">increased risk of premature death from social isolation (Holt-Lunstad et al.)</div>
             </div>
           </div>
         </FadeUp>
@@ -480,34 +461,28 @@ function SaanjhaCaseStudy({ onBack }) {
           <div className="cs-section">
             <h2 className="cs-section-title">The Problem</h2>
             <p>
-              Social isolation is a serious public health crisis, and in Seattle
-              it is made worse by the city's unique culture and demographics.
-              The phenomenon known as the
-              <strong> "Seattle Freeze" </strong> describes a pattern where
-              people are outwardly friendly but rarely form deeper, lasting
-              friendships. High rates of introversion, constant population
-              turnover driven by the tech industry (over 50,000 residents
-              relocating annually), more than 150 rainy days pushing people
-              indoors, and a local culture that values politeness over
-              directness all fuel this dynamic.
+              Social isolation is a serious public health crisis, and in Seattle it is made worse
+              by the city's unique culture and demographics. The phenomenon known as the
+              <strong> "Seattle Freeze" </strong> describes a pattern where people are outwardly
+              friendly but rarely form deeper, lasting friendships. High rates of introversion, constant
+              population turnover driven by the tech industry (over 50,000 residents relocating annually),
+              more than 150 rainy days pushing people indoors, and a local culture that values politeness
+              over directness all fuel this dynamic.
             </p>
             <p>
-              For people with disabilities and chronic illness, these cultural
-              barriers compound with real-world obstacles: inaccessible venues,
-              unreliable transit, and limited transportation options. The
-              experience of repeatedly arriving at a venue only to find it is
-              not truly accessible makes social participation feel risky and
-              discouraging, further reinforcing withdrawal from community life.
+              For people with disabilities and chronic illness, these cultural barriers compound with
+              real-world obstacles: inaccessible venues, unreliable transit, and limited transportation
+              options. The experience of repeatedly arriving at a venue only to find it is not truly
+              accessible makes social participation feel risky and discouraging, further reinforcing
+              withdrawal from community life.
             </p>
             <div className="cs-highlight">
               <p>
-                Research has established social isolation as a documented risk
-                factor for radicalization to violent extremism. Gill et al.
-                analyzed 119 lone-actor terrorists and found that many had
-                experienced deep social isolation before radicalizing. This
-                project demonstrates how technology can strengthen community
-                bonds proactively by removing the accessibility and inclusion
-                barriers that keep vulnerable people isolated.
+                Research has established social isolation as a documented risk factor for radicalization
+                to violent extremism. Gill et al. analyzed 119 lone-actor terrorists and found that many
+                had experienced deep social isolation before radicalizing. This project demonstrates
+                how technology can strengthen community bonds proactively by removing the accessibility
+                and inclusion barriers that keep vulnerable people isolated.
               </p>
             </div>
           </div>
@@ -518,52 +493,42 @@ function SaanjhaCaseStudy({ onBack }) {
           <div className="cs-section">
             <h2 className="cs-section-title">Why Existing Platforms Fail</h2>
             <p>
-              Existing platforms like Meetup, Bumble BFF, and Facebook Groups
-              fall short in several critical ways:
+              Existing platforms like Meetup, Bumble BFF, and Facebook Groups fall short
+              in several critical ways:
             </p>
             <div className="cs-features">
               <div className="cs-feature-card">
                 <div className="cs-feature-icon">&#10060;</div>
-                <div className="cs-feature-name">
-                  Inaccurate Accessibility Data
-                </div>
+                <div className="cs-feature-name">Inaccurate Accessibility Data</div>
                 <div className="cs-feature-desc">
-                  Accessibility information is user-submitted and frequently
-                  inaccurate. A venue listed as "accessible" may still lack
-                  step-free entrances, accessible restrooms, or adequate
-                  seating.
+                  Accessibility information is user-submitted and frequently inaccurate. A venue
+                  listed as "accessible" may still lack step-free entrances, accessible restrooms,
+                  or adequate seating.
                 </div>
               </div>
               <div className="cs-feature-card">
                 <div className="cs-feature-icon">&#10060;</div>
-                <div className="cs-feature-name">
-                  No Transportation Awareness
-                </div>
+                <div className="cs-feature-name">No Transportation Awareness</div>
                 <div className="cs-feature-desc">
-                  No platform accounts for transportation limitations or helps
-                  users determine whether they can realistically reach a venue
-                  given their mobility needs.
+                  No platform accounts for transportation limitations or helps users determine
+                  whether they can realistically reach a venue given their mobility needs.
                 </div>
               </div>
               <div className="cs-feature-card">
                 <div className="cs-feature-icon">&#10060;</div>
                 <div className="cs-feature-name">Overwhelming Group Sizes</div>
                 <div className="cs-feature-desc">
-                  Large default group sizes can feel overwhelming for people who
-                  are already apprehensive about social participation due to
-                  prior experiences of exclusion.
+                  Large default group sizes can feel overwhelming for people who are already
+                  apprehensive about social participation due to prior experiences of exclusion.
                 </div>
               </div>
               <div className="cs-feature-card">
                 <div className="cs-feature-icon">&#10060;</div>
-                <div className="cs-feature-name">
-                  No Accountability Mechanism
-                </div>
+                <div className="cs-feature-name">No Accountability Mechanism</div>
                 <div className="cs-feature-desc">
-                  No platform has any accountability mechanism to counter the
-                  Seattle Freeze pattern of last-minute cancellations, which
-                  disproportionately affects people who invested significant
-                  effort to attend.
+                  No platform has any accountability mechanism to counter the Seattle Freeze
+                  pattern of last-minute cancellations, which disproportionately affects
+                  people who invested significant effort to attend.
                 </div>
               </div>
             </div>
@@ -575,61 +540,32 @@ function SaanjhaCaseStudy({ onBack }) {
           <div className="cs-section">
             <h2 className="cs-section-title">The Matching Engine</h2>
             <p>
-              The core of Saanjha Social is a five-dimension matching engine
-              that scores users across weighted factors grounded in behavioral
-              science. Accessibility is weighted highest because both users must
-              be comfortable at the same venue for a meetup to succeed.
+              The core of Saanjha Social is a five-dimension matching engine that scores
+              users across weighted factors grounded in behavioral science. Accessibility
+              is weighted highest because both users must be comfortable at the same venue
+              for a meetup to succeed.
             </p>
             <div className="cs-weights-grid">
               {[
-                {
-                  pct: "30%",
-                  label: "Access",
-                  color: "#AE6965",
-                  desc: "Accessibility overlap scored first as a hard constraint",
-                },
-                {
-                  pct: "25%",
-                  label: "Interest",
-                  color: "#A58B71",
-                  desc: "Jaccard similarity (intersection over union)",
-                },
-                {
-                  pct: "20%",
-                  label: "Energy",
-                  color: "#7A816C",
-                  desc: "Accounts for variable energy from chronic illness",
-                },
-                {
-                  pct: "15%",
-                  label: "Group Size",
-                  color: "#D1A9A5",
-                  desc: "Preferred social setting (2-4 vs 5-10 people)",
-                },
-                {
-                  pct: "10%",
-                  label: "Attachment",
-                  color: "#B8887F",
-                  desc: "Grounded in attachment theory research",
-                },
+                { pct: "30%", label: "Access", color: "#AE6965", desc: "Accessibility overlap scored first as a hard constraint" },
+                { pct: "25%", label: "Interest", color: "#A58B71", desc: "Jaccard similarity (intersection over union)" },
+                { pct: "20%", label: "Energy", color: "#7A816C", desc: "Accounts for variable energy from chronic illness" },
+                { pct: "15%", label: "Group Size", color: "#D1A9A5", desc: "Preferred social setting (2-4 vs 5-10 people)" },
+                { pct: "10%", label: "Attachment", color: "#B8887F", desc: "Grounded in attachment theory research" },
               ].map(({ pct, label, color, desc }) => (
                 <div key={label} className="cs-weight-card">
-                  <div className="cs-weight-pct" style={{ color }}>
-                    {pct}
-                  </div>
+                  <div className="cs-weight-pct" style={{ color }}>{pct}</div>
                   <div className="cs-weight-label">{label}</div>
                   <div className="cs-weight-desc">{desc}</div>
                 </div>
               ))}
             </div>
             <p>
-              Accessibility is enforced as a <strong>hard constraint</strong>:
-              users only see venues that meet every one of their stated
-              requirements. Interest overlap uses Jaccard similarity. Energy
-              scoring accounts for "Variable" energy levels common in users with
-              chronic illness. Attachment style scoring is grounded in
-              attachment theory, where Secure-Secure pairings score highest and
-              Anxious-Avoidant pairings score lowest.
+              Accessibility is enforced as a <strong>hard constraint</strong>: users only see venues
+              that meet every one of their stated requirements. Interest overlap uses Jaccard similarity.
+              Energy scoring accounts for "Variable" energy levels common in users with chronic illness.
+              Attachment style scoring is grounded in attachment theory, where Secure-Secure pairings
+              score highest and Anxious-Avoidant pairings score lowest.
             </p>
           </div>
         </FadeUp>
@@ -643,40 +579,35 @@ function SaanjhaCaseStudy({ onBack }) {
                 <div className="cs-feature-icon">&#9989;</div>
                 <div className="cs-feature-name">Verified Venue Database</div>
                 <div className="cs-feature-desc">
-                  8 real Seattle venues manually verified for wheelchair access,
-                  noise levels, seating, sensory accommodations, service animal
-                  policies, and proximity to accessible transit stops.
+                  8 real Seattle venues manually verified for wheelchair access, noise levels,
+                  seating, sensory accommodations, service animal policies, and proximity to
+                  accessible transit stops.
                 </div>
               </div>
               <div className="cs-feature-card">
                 <div className="cs-feature-icon">&#129309;</div>
                 <div className="cs-feature-name">Buddy System</div>
                 <div className="cs-feature-desc">
-                  Every user is paired with a buddy before each event. Both
-                  confirm attendance 24 hours in advance and have pre-event
-                  chat. Designed to handle legitimate cancellations with
-                  understanding, not penalty.
+                  Every user is paired with a buddy before each event. Both confirm attendance
+                  24 hours in advance and have pre-event chat. Designed to handle legitimate
+                  cancellations with understanding, not penalty.
                 </div>
               </div>
               <div className="cs-feature-card">
                 <div className="cs-feature-icon">&#128506;</div>
                 <div className="cs-feature-name">Chat + Map Panel</div>
                 <div className="cs-feature-desc">
-                  Buddy chat with an integrated Seattle neighborhood map. Venue
-                  dots are color-coded: red for upcoming events, green for
-                  venues meeting the user's access needs, gray otherwise.
+                  Buddy chat with an integrated Seattle neighborhood map. Venue dots are color-coded:
+                  red for upcoming events, green for venues meeting the user's access needs, gray otherwise.
                 </div>
               </div>
               <div className="cs-feature-card">
                 <div className="cs-feature-icon">&#127963;</div>
-                <div className="cs-feature-name">
-                  Platform-Facilitated Events
-                </div>
+                <div className="cs-feature-name">Platform-Facilitated Events</div>
                 <div className="cs-feature-desc">
-                  Structured events (5-10 people, board games, art workshops)
-                  and casual meetups (2-4 people, coffee, walks). Users never
-                  need to host. Every listing includes a full accessibility
-                  breakdown.
+                  Structured events (5-10 people, board games, art workshops) and casual meetups
+                  (2-4 people, coffee, walks). Users never need to host. Every listing includes
+                  a full accessibility breakdown.
                 </div>
               </div>
             </div>
@@ -688,48 +619,20 @@ function SaanjhaCaseStudy({ onBack }) {
           <div className="cs-section">
             <h2 className="cs-section-title">Designed for Real People</h2>
             <p>
-              The platform ships with six sample users representing the target
-              demographics, each crafted to test different matching edge cases
-              and accessibility requirements:
+              The platform ships with six sample users representing the target demographics,
+              each crafted to test different matching edge cases and accessibility requirements:
             </p>
             <div className="cs-persona-grid">
               {[
-                {
-                  icon: "&#9855;",
-                  name: "Wheelchair User",
-                  desc: "New to Seattle, needs step-free entrances and accessible restrooms",
-                },
-                {
-                  icon: "&#129504;",
-                  name: "Autistic Adult",
-                  desc: "Prefers quiet small groups, low noise, sensory-friendly venues",
-                },
-                {
-                  icon: "&#128054;",
-                  name: "Service Dog Handler",
-                  desc: "Photographer who needs service animal accommodations",
-                },
-                {
-                  icon: "&#128187;",
-                  name: "Tech Transplant",
-                  desc: "Experiencing the Seattle Freeze firsthand, looking for genuine connection",
-                },
-                {
-                  icon: "&#128164;",
-                  name: "Chronic Fatigue",
-                  desc: "Retired teacher with variable energy levels, needs flexible scheduling",
-                },
-                {
-                  icon: "&#127891;",
-                  name: "Graduate Student",
-                  desc: "Multiple overlapping accessibility needs, limited transportation",
-                },
+                { icon: "&#9855;", name: "Wheelchair User", desc: "New to Seattle, needs step-free entrances and accessible restrooms" },
+                { icon: "&#129504;", name: "Autistic Adult", desc: "Prefers quiet small groups, low noise, sensory-friendly venues" },
+                { icon: "&#128054;", name: "Service Dog Handler", desc: "Photographer who needs service animal accommodations" },
+                { icon: "&#128187;", name: "Tech Transplant", desc: "Experiencing the Seattle Freeze firsthand, looking for genuine connection" },
+                { icon: "&#128164;", name: "Chronic Fatigue", desc: "Retired teacher with variable energy levels, needs flexible scheduling" },
+                { icon: "&#127891;", name: "Graduate Student", desc: "Multiple overlapping accessibility needs, limited transportation" },
               ].map(({ icon, name, desc }) => (
                 <div key={name} className="cs-persona-card">
-                  <div
-                    className="cs-persona-icon"
-                    dangerouslySetInnerHTML={{ __html: icon }}
-                  />
+                  <div className="cs-persona-icon" dangerouslySetInnerHTML={{ __html: icon }} />
                   <div className="cs-persona-name">{name}</div>
                   <div className="cs-persona-desc">{desc}</div>
                 </div>
@@ -743,52 +646,32 @@ function SaanjhaCaseStudy({ onBack }) {
           <div className="cs-section">
             <h2 className="cs-section-title">Technical Implementation</h2>
             <p>
-              Saanjha was built across two course projects, allowing iteration
-              from concept through high-fidelity prototype. The system follows a
-              three-tier architecture: User Interface Layer, Application Logic
-              Layer, and Data Persistence Layer.
+              Saanjha was built across two course projects, allowing iteration from concept
+              through high-fidelity prototype. The system follows a three-tier architecture:
+              User Interface Layer, Application Logic Layer, and Data Persistence Layer.
             </p>
             <div className="cs-two-col">
               <div>
-                <h3
-                  style={{
-                    fontFamily: "'Playfair Display', serif",
-                    fontSize: 20,
-                    fontWeight: 700,
-                    color: p.dark,
-                    marginBottom: 12,
-                  }}
-                >
+                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 20, fontWeight: 700, color: p.dark, marginBottom: 12 }}>
                   INFO 5100: Java Swing
                 </h3>
                 <p>
-                  Desktop application with <strong>19 Java files</strong>{" "}
-                  organized across model, logic, and view layers. Five model
-                  classes (UserProfile, AccessibilityPreferences, Venue, Event,
-                  UserMatch), three logic components (MatchingEngine,
-                  VenueFilter, BuddyMatcher), and a six-tab Swing interface. The
-                  matching engine runs at O(n) per user and O(n&sup2;) for all
-                  pairs.
+                  Desktop application with <strong>19 Java files</strong> organized across model, logic,
+                  and view layers. Five model classes (UserProfile, AccessibilityPreferences, Venue,
+                  Event, UserMatch), three logic components (MatchingEngine, VenueFilter, BuddyMatcher),
+                  and a six-tab Swing interface. The matching engine runs at O(n) per user and O(n&sup2;) for
+                  all pairs.
                 </p>
               </div>
               <div>
-                <h3
-                  style={{
-                    fontFamily: "'Playfair Display', serif",
-                    fontSize: 20,
-                    fontWeight: 700,
-                    color: p.dark,
-                    marginBottom: 12,
-                  }}
-                >
+                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 20, fontWeight: 700, color: p.dark, marginBottom: 12 }}>
                   INFO 6150: React/Vite SPA
                 </h3>
                 <p>
-                  Responsive single-page application with a mobile phone-frame
-                  UI, Puget Sound-inspired color palette, three-screen
-                  authentication flow, and a custom "Other" chip input system
-                  for open-ended profile fields. Built with accessibility and
-                  multilingual design considerations from the start.
+                  Responsive single-page application with a mobile phone-frame UI, Puget Sound-inspired
+                  color palette, three-screen authentication flow, and a custom "Other" chip input system
+                  for open-ended profile fields. Built with accessibility and multilingual design
+                  considerations from the start.
                 </p>
               </div>
             </div>
@@ -799,16 +682,11 @@ function SaanjhaCaseStudy({ onBack }) {
         <FadeUp>
           <div className="cs-callout">
             <p>
-              <strong>
-                Ethical framework built into the architecture, not added as an
-                afterthought.
-              </strong>{" "}
-              Accessibility data can reveal disability and health status. This
-              data is treated with the same care as protected health
-              information. All intervention design prioritizes user agency. The
-              platform works for its users, never against them. Genuine
-              inclusion requires both physical access and the assurance that
-              participation will never be used against someone.
+              <strong>Ethical framework built into the architecture, not added as an afterthought.</strong> Accessibility
+              data can reveal disability and health status. This data is treated with the same care as
+              protected health information. All intervention design prioritizes user agency. The platform
+              works for its users, never against them. Genuine inclusion requires both physical access
+              and the assurance that participation will never be used against someone.
             </p>
           </div>
         </FadeUp>
@@ -822,36 +700,32 @@ function SaanjhaCaseStudy({ onBack }) {
                 <div className="cs-feature-icon">&#128201;</div>
                 <div className="cs-feature-name">Reduced Isolation</div>
                 <div className="cs-feature-desc">
-                  Decrease in UCLA Loneliness Scale and PROMIS Social Isolation
-                  scores after three or more events attended.
+                  Decrease in UCLA Loneliness Scale and PROMIS Social Isolation scores after
+                  three or more events attended.
                 </div>
               </div>
               <div className="cs-feature-card">
                 <div className="cs-feature-icon">&#129303;</div>
                 <div className="cs-feature-name">Sustained Connection</div>
                 <div className="cs-feature-desc">
-                  At least one sustained friendship (3+ voluntary meetups)
-                  formed within three months of joining.
+                  At least one sustained friendship (3+ voluntary meetups) formed within
+                  three months of joining.
                 </div>
               </div>
               <div className="cs-feature-card">
                 <div className="cs-feature-icon">&#9855;</div>
-                <div className="cs-feature-name">
-                  90% Accessibility Satisfaction
-                </div>
+                <div className="cs-feature-name">90% Accessibility Satisfaction</div>
                 <div className="cs-feature-desc">
-                  Users report that venues met their stated accessibility needs
-                  without unexpected barriers.
+                  Users report that venues met their stated accessibility needs without
+                  unexpected barriers.
                 </div>
               </div>
               <div className="cs-feature-card">
                 <div className="cs-feature-icon">&#128197;</div>
-                <div className="cs-feature-name">
-                  Below 15% Cancellation Rate
-                </div>
+                <div className="cs-feature-name">Below 15% Cancellation Rate</div>
                 <div className="cs-feature-desc">
-                  The buddy system targets keeping cancellations below 15%,
-                  compared to the 30-40% typical of general social platforms.
+                  The buddy system targets keeping cancellations below 15%, compared to
+                  the 30-40% typical of general social platforms.
                 </div>
               </div>
             </div>
@@ -864,30 +738,12 @@ function SaanjhaCaseStudy({ onBack }) {
             <h2 className="cs-section-title">Future Directions</h2>
             <div className="cs-future-grid">
               {[
-                {
-                  title: "Real-Time Transit Integration",
-                  desc: "King County Metro GTFS API for actual travel times, wheelchair-accessible stops, and real-time service disruptions.",
-                },
-                {
-                  title: "Machine Learning Match Refinement",
-                  desc: "Collecting anonymized feedback to learn optimal matching weights over time using supervised learning.",
-                },
-                {
-                  title: "Mobile Application",
-                  desc: "Responsive mobile interface for users who rely on smartphones and mobile assistive technology.",
-                },
-                {
-                  title: "Expanded Venue Database",
-                  desc: "Scaling from 8 to 50+ venues through partnerships with Seattle Parks and Recreation and volunteer verification.",
-                },
-                {
-                  title: "Real-Time Buddy Chat",
-                  desc: "End-to-end encrypted messaging replacing the current simulated chat interface.",
-                },
-                {
-                  title: "Community Resilience Dashboard",
-                  desc: "Aggregated, anonymized neighborhood-level data showing isolation trends and venue utilization.",
-                },
+                { title: "Real-Time Transit Integration", desc: "King County Metro GTFS API for actual travel times, wheelchair-accessible stops, and real-time service disruptions." },
+                { title: "Machine Learning Match Refinement", desc: "Collecting anonymized feedback to learn optimal matching weights over time using supervised learning." },
+                { title: "Mobile Application", desc: "Responsive mobile interface for users who rely on smartphones and mobile assistive technology." },
+                { title: "Expanded Venue Database", desc: "Scaling from 8 to 50+ venues through partnerships with Seattle Parks and Recreation and volunteer verification." },
+                { title: "Real-Time Buddy Chat", desc: "End-to-end encrypted messaging replacing the current simulated chat interface." },
+                { title: "Community Resilience Dashboard", desc: "Aggregated, anonymized neighborhood-level data showing isolation trends and venue utilization." },
               ].map(({ title, desc }) => (
                 <div key={title} className="cs-future-card">
                   <div className="cs-future-title">{title}</div>
@@ -903,19 +759,16 @@ function SaanjhaCaseStudy({ onBack }) {
           <div className="cs-section">
             <h2 className="cs-section-title">Recognition</h2>
             <p>
-              Saanjha Social was presented at the{" "}
-              <strong>College of Engineering MS Student Showcase</strong> on
-              April 21, 2026, under the advisorship of Professor Guanzhou Ji.
-              The research poster and paper generated meaningful conversation
-              among faculty and peers about social isolation on campus. Several
-              students shared that the "Seattle Freeze" concept directly
-              reflected their own experience of moving to Seattle for graduate
-              school.
+              Saanjha Social was presented at the <strong>College of Engineering MS Student
+              Showcase</strong> on April 21, 2026, under the advisorship of Professor Guanzhou Ji.
+              The research poster and paper generated meaningful conversation among faculty and peers
+              about social isolation on campus. Several students shared that the "Seattle Freeze"
+              concept directly reflected their own experience of moving to Seattle for graduate school.
             </p>
             <p>
-              The project continues to evolve. I am exploring opportunities to
-              present at external conferences and develop the platform beyond an
-              academic context, with the ultimate goal of deployment in Seattle.
+              The project continues to evolve. I am exploring opportunities to present at external
+              conferences and develop the platform beyond an academic context, with the ultimate goal
+              of deployment in Seattle.
             </p>
           </div>
         </FadeUp>
@@ -947,7 +800,7 @@ export default function App() {
           const el = document.getElementById(s.toLowerCase());
           return el ? { id: s, top: el.getBoundingClientRect().top } : null;
         })
-        .filter(Boolean);
+        .filter((o): o is { id: string; top: number } => o !== null);
       const current = offsets.filter((o) => o.top <= 120).pop();
       if (current) setActive(current.id);
     };
@@ -960,25 +813,11 @@ export default function App() {
       <>
         <style>{styles}</style>
         <nav className="navbar scrolled">
-          <div
-            className="nav-logo"
-            style={{ cursor: "pointer" }}
-            onClick={() => setView("home")}
-          >
+          <div className="nav-logo" style={{ cursor: "pointer" }} onClick={() => setView("home")}>
             Neerkamal Jaswal
           </div>
           <ul className="nav-links">
-            <li>
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setView("home");
-                }}
-              >
-                Home
-              </a>
-            </li>
+            <li><a href="#" onClick={(e) => { e.preventDefault(); setView("home"); }}>Home</a></li>
           </ul>
         </nav>
         <SaanjhaCaseStudy onBack={() => setView("home")} />
@@ -998,10 +837,7 @@ export default function App() {
         <ul className="nav-links">
           {navSections.map((s) => (
             <li key={s}>
-              <a
-                href={`#${s.toLowerCase()}`}
-                className={active === s ? "active" : ""}
-              >
+              <a href={`#${s.toLowerCase()}`} className={active === s ? "active" : ""}>
                 {s}
               </a>
             </li>
@@ -1025,24 +861,10 @@ export default function App() {
             everyone, especially the people most often left out.
           </p>
           <div className="hero-btns">
-            <button
-              className="btn-primary"
-              onClick={() =>
-                document
-                  .getElementById("work")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-            >
+            <button className="btn-primary" onClick={() => document.getElementById("work")?.scrollIntoView({ behavior: "smooth" })}>
               View my work
             </button>
-            <button
-              className="btn-outline"
-              onClick={() =>
-                document
-                  .getElementById("contact")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-            >
+            <button className="btn-outline" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>
               Get in touch
             </button>
           </div>
@@ -1053,19 +875,11 @@ export default function App() {
       {/* ABOUT */}
       <div id="about" style={{ background: p.cream }}>
         <div className="section">
-          <FadeUp>
-            <div className="section-eyebrow">About me</div>
-          </FadeUp>
+          <FadeUp><div className="section-eyebrow">About me</div></FadeUp>
           <FadeUp delay={1}>
-            <div className="section-title">
-              Designer. Researcher.
-              <br />
-              Community Builder.
-            </div>
+            <div className="section-title">Designer. Researcher.<br />Community Builder.</div>
           </FadeUp>
-          <FadeUp delay={2}>
-            <div className="divider" />
-          </FadeUp>
+          <FadeUp delay={2}><div className="divider" /></FadeUp>
           <div className="about-grid">
             <FadeUp delay={2}>
               <div className="about-text">
@@ -1077,32 +891,24 @@ export default function App() {
                   work elegantly for everyone.
                 </p>
                 <p>
-                  At Seattle University, I conducted award-winning research on
-                  how people process scientific information and form
-                  health-related attitudes, earning the{" "}
-                  <strong>
-                    Outstanding Undergraduate Research Project Award.
-                  </strong>{" "}
+                  At Seattle University, I conducted award-winning research on how
+                  people process scientific information and form health-related
+                  attitudes, earning the{" "}
+                  <strong>Outstanding Undergraduate Research Project Award.</strong>{" "}
                   That work taught me to focus on user motivations and behavior,
                   not just stated preferences.
                 </p>
                 <p>
-                  I am currently a UX Design Intern at UpKeep Home Services and
-                  am developing Saanjha Social, a community connection platform
-                  addressing social isolation in Seattle. I am also the founder
-                  of Nadar, a Punjabi cultural brand.
+                  I am currently a UX Design Intern at UpKeep Home Services
+                  and am developing Saanjha Social, a community connection platform
+                  addressing social isolation in Seattle. I am also the founder of
+                  Nadar, a Punjabi cultural brand.
                 </p>
                 <div className="about-stats">
                   {[
                     { num: "12 → 7", label: "Booking steps reduced at UpKeep" },
-                    {
-                      num: "133",
-                      label: "Research participants, award-winning study",
-                    },
-                    {
-                      num: "4",
-                      label: "Languages spoken fluently or conversationally",
-                    },
+                    { num: "133", label: "Research participants, award-winning study" },
+                    { num: "4", label: "Languages spoken fluently or conversationally" },
                     { num: "3.92", label: "GPA, MS Information Systems" },
                   ].map(({ num, label }) => (
                     <div key={label} className="stat-box">
@@ -1116,25 +922,10 @@ export default function App() {
             <FadeUp delay={3}>
               <div className="about-details">
                 {[
-                  {
-                    label: "Education",
-                    value:
-                      "MS Information Systems\nNortheastern University Seattle\n\nBA Psychology\nSeattle University",
-                  },
-                  {
-                    label: "Currently",
-                    value:
-                      "UX Design Intern at UpKeep\nBuilding Saanjha Social\nFounding Nadar ਨਦਰ",
-                  },
-                  {
-                    label: "Languages",
-                    value:
-                      "English \u00B7 Punjabi (fluent)\nHindi \u00B7 Urdu (conversational)",
-                  },
-                  {
-                    label: "Based in",
-                    value: "Seattle, WA\nOpen to remote and relocation",
-                  },
+                  { label: "Education", value: "MS Information Systems\nNortheastern University Seattle\n\nBA Psychology\nSeattle University" },
+                  { label: "Currently", value: "UX Design Intern at UpKeep\nBuilding Saanjha Social\nFounding Nadar ਨਦਰ" },
+                  { label: "Languages", value: "English \u00B7 Punjabi (fluent)\nHindi \u00B7 Urdu (conversational)" },
+                  { label: "Based in", value: "Seattle, WA\nOpen to remote and relocation" },
                 ].map(({ label, value }) => (
                   <div key={label} className="detail-card">
                     <div className="detail-label">{label}</div>
@@ -1150,59 +941,21 @@ export default function App() {
       {/* SKILLS */}
       <div id="skills" style={{ background: "white" }}>
         <div className="section">
-          <FadeUp>
-            <div className="section-eyebrow">What I do</div>
-          </FadeUp>
-          <FadeUp delay={1}>
-            <div className="section-title">Primary skills</div>
-          </FadeUp>
-          <FadeUp delay={2}>
-            <div className="divider" />
-          </FadeUp>
+          <FadeUp><div className="section-eyebrow">What I do</div></FadeUp>
+          <FadeUp delay={1}><div className="section-title">Primary skills</div></FadeUp>
+          <FadeUp delay={2}><div className="divider" /></FadeUp>
           <div className="skills-grid">
             {[
-              {
-                icon: "🎨",
-                bg: p.roseLight,
-                name: "UX Design & Prototyping",
-                desc: "I design end-to-end product experiences in Figma, focusing on cognitive load and mental models rooted in psychology.",
-              },
-              {
-                icon: "🔬",
-                bg: p.sageLight,
-                name: "Research & Behavior",
-                desc: "I have led 133-participant studies. I focus on what users actually do rather than just what they say.",
-              },
-              {
-                icon: "♿",
-                bg: p.oakLight,
-                name: "Inclusive Design",
-                desc: "Accessibility is my starting point. I design from the margins inward to ensure experiences work for everyone.",
-              },
-              {
-                icon: "🌐",
-                bg: p.rustLight,
-                name: "Cultural Strategy",
-                desc: "Fluent in English and Punjabi. I build with diaspora communities in mind, ensuring multilingual UX feels native.",
-              },
-              {
-                icon: "💻",
-                bg: p.sageLight,
-                name: "Frontend Development",
-                desc: "Experience with React, JS, and CSS allows me to collaborate effectively with engineering teams.",
-              },
-              {
-                icon: "🏛",
-                bg: p.roseLight,
-                name: "Brand Identity",
-                desc: "Through Nadar, I have developed a brand identity that bridges traditional heritage and modern aesthetics.",
-              },
+              { icon: "🎨", bg: p.roseLight, name: "UX Design & Prototyping", desc: "I design end-to-end product experiences in Figma, focusing on cognitive load and mental models rooted in psychology." },
+              { icon: "🔬", bg: p.sageLight, name: "Research & Behavior", desc: "I have led 133-participant studies. I focus on what users actually do rather than just what they say." },
+              { icon: "♿", bg: p.oakLight, name: "Inclusive Design", desc: "Accessibility is my starting point. I design from the margins inward to ensure experiences work for everyone." },
+              { icon: "🌐", bg: p.rustLight, name: "Cultural Strategy", desc: "Fluent in English and Punjabi. I build with diaspora communities in mind, ensuring multilingual UX feels native." },
+              { icon: "💻", bg: p.sageLight, name: "Frontend Development", desc: "Experience with React, JS, and CSS allows me to collaborate effectively with engineering teams." },
+              { icon: "🏛", bg: p.roseLight, name: "Brand Identity", desc: "Through Nadar, I have developed a brand identity that bridges traditional heritage and modern aesthetics." },
             ].map(({ icon, bg, name, desc }, i) => (
               <FadeUp key={name} delay={Math.min(i + 1, 6)}>
                 <div className="skill-card">
-                  <div className="skill-icon" style={{ background: bg }}>
-                    {icon}
-                  </div>
+                  <div className="skill-icon" style={{ background: bg }}>{icon}</div>
                   <div className="skill-name">{name}</div>
                   <div className="skill-desc">{desc}</div>
                 </div>
@@ -1215,34 +968,15 @@ export default function App() {
       {/* PROJECTS */}
       <div id="work" style={{ background: p.cream }}>
         <div className="section">
-          <FadeUp>
-            <div className="section-eyebrow">Selected work</div>
-          </FadeUp>
-          <FadeUp delay={1}>
-            <div className="section-title">Projects</div>
-          </FadeUp>
-          <FadeUp delay={2}>
-            <div className="divider" />
-          </FadeUp>
+          <FadeUp><div className="section-eyebrow">Selected work</div></FadeUp>
+          <FadeUp delay={1}><div className="section-title">Projects</div></FadeUp>
+          <FadeUp delay={2}><div className="divider" /></FadeUp>
           <div className="projects-list">
             {/* SAANJHA */}
             <FadeUp>
               <div className="project-row">
-                <div
-                  className="project-visual"
-                  style={{
-                    background: "linear-gradient(135deg,#F5F0EE,#EDE8E5)",
-                  }}
-                >
-                  <img
-                    src="/cover.png"
-                    alt="Saanjha Social - Connection without barriers"
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
+                <div className="project-visual" style={{ background: "linear-gradient(135deg,#F5F0EE,#EDE8E5)" }}>
+                  <img src="/cover.png" alt="Saanjha Social - Connection without barriers" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 </div>
                 <div>
                   <div className="project-tags">
@@ -1252,26 +986,15 @@ export default function App() {
                   </div>
                   <div className="project-name">Saanjha ਸਾਂਝਾ Social</div>
                   <div className="project-meta">
-                    <div className="proj-meta-item">
-                      <span className="proj-meta-label">Role</span>Lead UX
-                      Designer
-                    </div>
-                    <div className="proj-meta-item">
-                      <span className="proj-meta-label">Timeline</span>2025 to
-                      Present
-                    </div>
+                    <div className="proj-meta-item"><span className="proj-meta-label">Role</span>Lead UX Designer</div>
+                    <div className="proj-meta-item"><span className="proj-meta-label">Timeline</span>2025 to Present</div>
                   </div>
                   <p className="project-desc">
-                    A community connection platform addressing social isolation
-                    in Seattle. Centers accessibility-first venue verification,
-                    behavioral matching, and multilingual support.
+                    A community connection platform addressing social isolation in
+                    Seattle. Centers accessibility-first venue verification, behavioral
+                    matching, and multilingual support.
                   </p>
-                  <a
-                    className="project-link"
-                    onClick={() => setView("saanjha")}
-                  >
-                    View case study →
-                  </a>
+                  <a className="project-link" onClick={() => setView("saanjha")}>View case study →</a>
                 </div>
               </div>
             </FadeUp>
@@ -1279,24 +1002,8 @@ export default function App() {
             {/* UPKEEP */}
             <FadeUp>
               <div className="project-row reverse">
-                <div
-                  className="project-visual"
-                  style={{
-                    background: "#ffffff",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <img
-                    src="/upkeeplogo.png"
-                    alt="UpKeep"
-                    style={{
-                      maxWidth: "70%",
-                      maxHeight: "60%",
-                      objectFit: "contain",
-                    }}
-                  />
+                <div className="project-visual" style={{ background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <img src="/upkeeplogo.png" alt="UpKeep" style={{ maxWidth: "70%", maxHeight: "60%", objectFit: "contain" }} />
                 </div>
                 <div>
                   <div className="project-tags">
@@ -1305,30 +1012,14 @@ export default function App() {
                   </div>
                   <div className="project-name">UpKeep Mobile App</div>
                   <div className="project-meta">
-                    <div className="proj-meta-item">
-                      <span className="proj-meta-label">Role</span>UX Design
-                      Intern
-                    </div>
-                    <div className="proj-meta-item">
-                      <span className="proj-meta-label">Timeline</span>2025 to
-                      2026
-                    </div>
+                    <div className="proj-meta-item"><span className="proj-meta-label">Role</span>UX Design Intern</div>
+                    <div className="proj-meta-item"><span className="proj-meta-label">Timeline</span>2025 to 2026</div>
                   </div>
                   <p className="project-desc">
-                    Streamlined the booking flow from 12 steps to 7. Designed
-                    for both customers and cleaners to increase pricing
-                    transparency.
+                    Streamlined the booking flow from 12 steps to 7. Designed for
+                    both customers and cleaners to increase pricing transparency.
                   </p>
-                  <span
-                    className="project-link"
-                    style={{
-                      color: p.muted,
-                      cursor: "default",
-                      borderBottom: "none",
-                    }}
-                  >
-                    Case study coming soon
-                  </span>
+                  <span className="project-link" style={{ color: p.muted, cursor: "default", borderBottom: "none" }}>Case study coming soon</span>
                 </div>
               </div>
             </FadeUp>
@@ -1336,24 +1027,8 @@ export default function App() {
             {/* NADAR */}
             <FadeUp>
               <div className="project-row">
-                <div
-                  className="project-visual"
-                  style={{
-                    background: "#FFFAF5",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <img
-                    src="/Nadar_Wall_Art_One.png"
-                    alt="Nadar - made with nadar, made to be seen"
-                    style={{
-                      maxWidth: "75%",
-                      maxHeight: "85%",
-                      objectFit: "contain",
-                    }}
-                  />
+                <div className="project-visual" style={{ background: "#FFFAF5", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <img src="/Nadar_Wall_Art_One.png" alt="Nadar - made with nadar, made to be seen" style={{ maxWidth: "75%", maxHeight: "85%", objectFit: "contain" }} />
                 </div>
                 <div>
                   <div className="project-tags">
@@ -1362,27 +1037,14 @@ export default function App() {
                   </div>
                   <div className="project-name">Nadar ਨਦਰ</div>
                   <div className="project-meta">
-                    <div className="proj-meta-item">
-                      <span className="proj-meta-label">Role</span>Founder
-                    </div>
-                    <div className="proj-meta-item">
-                      <span className="proj-meta-label">Launch</span>2026
-                    </div>
+                    <div className="proj-meta-item"><span className="proj-meta-label">Role</span>Founder</div>
+                    <div className="proj-meta-item"><span className="proj-meta-label">Launch</span>2026</div>
                   </div>
                   <p className="project-desc">
                     A Punjabi cultural brand for the diaspora, filling the gap
                     between traditional goods and modern aesthetic needs.
                   </p>
-                  <span
-                    className="project-link"
-                    style={{
-                      color: p.muted,
-                      cursor: "default",
-                      borderBottom: "none",
-                    }}
-                  >
-                    Etsy shop coming soon
-                  </span>
+                  <span className="project-link" style={{ color: p.muted, cursor: "default", borderBottom: "none" }}>Etsy shop coming soon</span>
                 </div>
               </div>
             </FadeUp>
@@ -1395,8 +1057,8 @@ export default function App() {
         <FadeUp>
           <div className="philosophy-inner">
             <div className="philosophy-text">
-              "I design from the margins inward, because when experiences work
-              for the most overlooked users, they work better for everyone."
+              "I design from the margins inward, because when experiences work for
+              the most overlooked users, they work better for everyone."
             </div>
             <div className="philosophy-attr">Neerkamal Jaswal</div>
           </div>
@@ -1406,45 +1068,15 @@ export default function App() {
       {/* JOURNEY */}
       <div id="journey" className="journey-bg">
         <div className="section">
-          <FadeUp>
-            <div className="section-eyebrow" style={{ color: "#D1A9A5" }}>
-              Career journey
-            </div>
-          </FadeUp>
-          <FadeUp delay={1}>
-            <div className="section-title" style={{ color: "#F5F1EC" }}>
-              How I got here
-            </div>
-          </FadeUp>
-          <FadeUp delay={2}>
-            <div className="divider" />
-          </FadeUp>
+          <FadeUp><div className="section-eyebrow" style={{ color: "#D1A9A5" }}>Career journey</div></FadeUp>
+          <FadeUp delay={1}><div className="section-title" style={{ color: "#F5F1EC" }}>How I got here</div></FadeUp>
+          <FadeUp delay={2}><div className="divider" /></FadeUp>
           <div className="journey-grid">
             {[
-              {
-                period: "2022 – 2023",
-                role: "Lead Researcher",
-                org: "Seattle University",
-                desc: "Led award-winning behavioral research on information processing and attitude formation with 133 participants.",
-              },
-              {
-                period: "2024 – 2025",
-                role: "Operations Officer",
-                org: "VFS Global",
-                desc: "Managed consular operations for applicants from 20+ countries, building cross-cultural communication expertise.",
-              },
-              {
-                period: "2025 – Present",
-                role: "MS IS Student",
-                org: "Northeastern University",
-                desc: "Bridging behavioral science, engineering, and human-centered design in the College of Engineering.",
-              },
-              {
-                period: "2025 – 2026",
-                role: "UX Design Intern",
-                org: "UpKeep Home Services",
-                desc: "Redesigned mobile booking flows and conducted user research for a home services platform.",
-              },
+              { period: "2022 – 2023", role: "Lead Researcher", org: "Seattle University", desc: "Led award-winning behavioral research on information processing and attitude formation with 133 participants." },
+              { period: "2024 – 2025", role: "Operations Officer", org: "VFS Global", desc: "Managed consular operations for applicants from 20+ countries, building cross-cultural communication expertise." },
+              { period: "2025 – Present", role: "MS IS Student", org: "Northeastern University", desc: "Bridging behavioral science, engineering, and human-centered design in the College of Engineering." },
+              { period: "2025 – 2026", role: "UX Design Intern", org: "UpKeep Home Services", desc: "Redesigned mobile booking flows and conducted user research for a home services platform." },
             ].map((j, i) => (
               <FadeUp key={j.role} delay={Math.min(i + 1, 6)}>
                 <div className="journey-card">
@@ -1462,64 +1094,38 @@ export default function App() {
       {/* CONTACT */}
       <div id="contact" style={{ background: "white" }}>
         <div className="section">
-          <FadeUp>
-            <div className="section-eyebrow">Get in touch</div>
-          </FadeUp>
+          <FadeUp><div className="section-eyebrow">Get in touch</div></FadeUp>
           <FadeUp delay={1}>
-            <div className="section-title">
-              Let us build something
-              <br />
-              meaningful.
-            </div>
+            <div className="section-title">Let us build something<br />meaningful.</div>
           </FadeUp>
-          <FadeUp delay={2}>
-            <div className="divider" />
-          </FadeUp>
+          <FadeUp delay={2}><div className="divider" /></FadeUp>
           <div className="contact-grid">
             <FadeUp delay={3}>
               <div className="contact-text">
                 <p>
-                  Currently looking for{" "}
-                  <strong>UX Design or Research roles</strong> where I can
-                  contribute to accessible, high-impact products.
+                  Currently looking for <strong>UX Design or Research roles</strong> where
+                  I can contribute to accessible, high-impact products.
                 </p>
                 <p>Seattle based, open to remote and relocation.</p>
               </div>
             </FadeUp>
             <FadeUp delay={4}>
               <div className="contact-links">
-                <a
-                  className="contact-link-row"
-                  href="mailto:jaswal.n@northeastern.edu"
-                >
+                <a className="contact-link-row" href="mailto:jaswal.n@northeastern.edu">
                   <div>
                     <div className="contact-link-label">Email</div>
-                    <div className="contact-link-sub">
-                      jaswal.n@northeastern.edu
-                    </div>
+                    <div className="contact-link-sub">jaswal.n@northeastern.edu</div>
                   </div>
                   <span className="contact-arrow">→</span>
                 </a>
-                <a
-                  className="contact-link-row"
-                  href="https://www.linkedin.com/in/neerkamaljaswal/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a className="contact-link-row" href="https://www.linkedin.com/in/neerkamaljaswal/" target="_blank" rel="noopener noreferrer">
                   <div>
                     <div className="contact-link-label">LinkedIn</div>
-                    <div className="contact-link-sub">
-                      linkedin.com/in/neerkamaljaswal
-                    </div>
+                    <div className="contact-link-sub">linkedin.com/in/neerkamaljaswal</div>
                   </div>
                   <span className="contact-arrow">→</span>
                 </a>
-                <a
-                  className="contact-link-row"
-                  href="https://github.com/NJKaur"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a className="contact-link-row" href="https://github.com/NJKaur" target="_blank" rel="noopener noreferrer">
                   <div>
                     <div className="contact-link-label">GitHub</div>
                     <div className="contact-link-sub">github.com/NJKaur</div>
